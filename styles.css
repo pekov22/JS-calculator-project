@@ -1,24 +1,24 @@
 *, *::before, *::after{
     box-sizing: border-box;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;  /*사용되는 글꼴은 나열된 순서대로 우선권을 가진다*/
     font-weight: normal;
 }
 
-body{
+body{  /*배경색 설정*/ 
     padding: 0;
     margin: 0;
     background:linear-gradient(to right, #00AAFF, #00FF6C);
 }
 
-.calculator-grid {
-    display: grid;
+.calculator-grid { /*계산기 전체를 감싼다*/
+    display: grid;  /*그리드 적용 시작 설정*/
     justify-content: center;
     align-content:center; /*align-items: 이었음*/
     min-height:100vh;
     grid-template-columns: repeat(4,100px);
     grid-template-rows: minmax(120px, auto) repeat(5,100px);
 }
-
+/**/ 
 .calculator-grid >button{
     cursor: pointer;
     font-size:2rem;
@@ -35,13 +35,13 @@ body{
     grid-column: span 2; 
 }
 
-.output {
+.output {   /*출력 창 설정*/ 
     grid-column: 1/-1;
     background-color: rgba(0,0,0, .75);
     display: flex;
-    align-items: flex-end;
-    justify-content:  space-around;
-    flex-direction: column;
+    align-items: flex-end; /*수직축 방향 정렬: 끝(바닥)에 정렬*/
+    justify-content:  space-around; /*메인축 방향(가로) 정렬: 아이템들의 둘레에 간격 넣기 */
+    flex-direction: column; /*구성요소를 세로(열)로 나열*/ 
     padding: 10px;
     word-wrap: break-word;
     word-break: break-all;
