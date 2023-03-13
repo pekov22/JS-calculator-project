@@ -1,5 +1,5 @@
-*, *::before, *::after{
-    box-sizing: border-box;
+*, *::before, *::after{  /*모든 요소, 실제 내용 바로 앞/뒤에서 생성되는 자식요소 */
+    box-sizing: border-box; 
     font-family: Georgia, 'Times New Roman', Times, serif;  /*사용되는 글꼴은 나열된 순서대로 우선권을 가진다*/
     font-weight: normal;
 }
@@ -10,49 +10,50 @@ body{  /*배경색 설정*/
     background:linear-gradient(to right, #00AAFF, #00FF6C);
 }
 
-.calculator-grid { /*계산기 전체를 감싼다*/
+.calculator-grid { /*계산기 전체 관여, 형태 설정*/
     display: grid;  /*그리드 적용 시작 설정*/
-    justify-content: center;
-    align-content:center; /*align-items: 이었음*/
-    min-height:100vh;
-    grid-template-columns: repeat(4,100px);
-    grid-template-rows: minmax(120px, auto) repeat(5,100px);
-}
-/**/ 
-.calculator-grid >button{
-    cursor: pointer;
-    font-size:2rem;
-    border: 1px solid white;
-    outline: none;
-    background-color: rgba(255,255,255,.75);
+    justify-content: center;  /* 좌우 정렬: 중앙*/
+    align-content:center; /*align-items: 이었음, 수직 정렬: 중앙*/
+    min-height:100vh;  /*요소의 최종 높이: 100vh*/
+    grid-template-columns: repeat(4,100px); /*각 행:  4개씩, 100px 크기의 반복*/
+    grid-template-rows: minmax(120px, auto) repeat(5,100px); /* 최소 120px, 이후 자동*/
 }
 
-.calculator-grid >button:hover{
-    background-color: rgba(255,255,255,.9);
+.calculator-grid >button{ /*계산기 버튼의 색*/ 
+    cursor: pointer; /*요소에 마우스 커서 올라가면: 손가락 모양 */
+    font-size:2rem; 
+    border: 1px solid white; 
+    outline: none; /*버튼 외곽선: 없음*/
+    background-color: rgba(255,255,255,.75); /*버튼 배경색 : 흰색?*/
 }
 
-.span-two{
-    grid-column: span 2; 
+.calculator-grid >button:hover{ /*버튼에 커서를 올릴때의 색 변화*/
+    background-color: rgba(255, 255, 255, 0.9); /**/
+}
+
+.span-two{  /*버튼들을 잘 배치해 준다(상세불명)*/
+    grid-column: span 2; /*열 배치 관여, span은 뭐지?*/
 }
 
 .output {   /*출력 창 설정*/ 
-    grid-column: 1/-1;
+    grid-column: 1/-1; /*그리드 열 설정: 1번째에서 -1번째까지*/
     background-color: rgba(0,0,0, .75);
-    display: flex;
-    align-items: flex-end; /*수직축 방향 정렬: 끝(바닥)에 정렬*/
+    display: flex;  /*flex 사용 시작 설정*/
+    align-items: flex-end; /*수직축 방향(세로) 정렬: 끝(바닥)에 정렬*/
     justify-content:  space-around; /*메인축 방향(가로) 정렬: 아이템들의 둘레에 간격 넣기 */
     flex-direction: column; /*구성요소를 세로(열)로 나열*/ 
     padding: 10px;
-    word-wrap: break-word;
-    word-break: break-all;
+    word-wrap: break-word; /*띄어쓰기 없는 단어(비아시아 언어): 긴 단어 끊어지게*/
+    word-break: break-all; /*박스 영역 넘은 문자: 문자 강제 줄바꿈*/
 }
 
 .output .previous-operand{
     color:rgba(255,255,255,.75);
-    font-size: 1.5rem;
+    font-size: 1.5rem; /**/
 }
 
 .output .current-operand{
     color: white;
     font-size: 2.5rem;
 }
+/*출력창의 글의 색과 크기 조정, 각각 이전과 현재의 항 */
